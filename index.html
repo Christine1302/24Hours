@@ -211,7 +211,7 @@
 
 <div id="rsvpModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close rsvp-close">&times;</span>
 
     <h2>Let us know where you plan to be!</h2>
 
@@ -235,44 +235,59 @@
         <label><input type="checkbox" name="evening_chill"> 4–10 PM Chill</label>
       </div>
 
-      <div id="thankYouPopup" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>🎉 Thank you!</h2>
-          <p>Your RSVP has been submitted. We’ll see you at the party!</p>
-        </div>
-      </div>
-
       <button type="submit">Submit RSVP</button>
     </form>
 
   </div>
 </div>
 
+      <div id="thankYouPopup" class="modal">
+        <div class="modal-content">
+          <span class="close thankyou-close">&times;</span>
+          <h2>🎉 Thank you!</h2>
+          <p>Your RSVP has been submitted. We’ll see you at the party!</p>
+        </div>
+      </div>
+
+
 <script>
   const modal = document.getElementById("rsvpModal");
   const openBtn = document.getElementById("openModal");
-  const closeBtn = document.querySelector(".close");
+  const closeRsvp = document.querySelector(".rsvp-close");
+  const closeThankYou = document.querySelector(".thankyou-close");
+
 
   openBtn.onclick = function(e) {
     e.preventDefault();
     modal.style.display = "block";
   }
 
-  closeBtn.onclick = function() {
+  // closeBtn.onclick = function() {
+  //   modal.style.display = "none";
+  // }
+closeRsvp.onclick = function() {
+  modal.style.display = "none";
+};
+
+closeThankYou.onclick = function() {
+  thankYouPopup.style.display = "none";
+};
+
+
+
+ window.onclick = function(event) {
+  if (event.target === modal) {
     modal.style.display = "none";
   }
-
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
+  if (event.target === thankYouPopup) {
+    thankYouPopup.style.display = "none";
   }
+};
 </script>
 <script>
   const rsvpForm = document.forms["rsvp"];
   const thankYouPopup = document.getElementById("thankYouPopup");
-  const closeThankYou = thankYouPopup.querySelector(".close");
+  // const closeThankYou = thankYouPopup.querySelector(".close");
 
   rsvpForm.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -298,11 +313,6 @@
     thankYouPopup.style.display = "none";
   };
 
-  window.onclick = function(event) {
-    if (event.target === thankYouPopup) {
-      thankYouPopup.style.display = "none";
-    }
-  };
 </script>
 
 
