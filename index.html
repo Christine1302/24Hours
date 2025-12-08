@@ -33,9 +33,11 @@
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
-  align-items: flex-start;
+
+  /* display: flex; */
+  align-items: center;
   justify-content: center;
-  padding-top: 5%;
+  padding: 20px;
 }
 
 .modal.show {
@@ -265,14 +267,14 @@
 
   openBtn.onclick = function(e) {
     e.preventDefault();
-    modal.style.display = "block";
+    modal.classList.add("show");
   }
 
   // closeBtn.onclick = function() {
   //   modal.style.display = "none";
   // }
 closeRsvp.onclick = function() {
-  modal.style.display = "none";
+  modal.classList.remove("show");
 };
 
 closeThankYou.onclick = function() {
@@ -283,7 +285,7 @@ closeThankYou.onclick = function() {
 
  window.onclick = function(event) {
   if (event.target === modal) {
-    modal.style.display = "none";
+    modal.classList.remove("show");
   }
   if (event.target === thankYouPopup) {
     thankYouPopup.style.display = "none";
