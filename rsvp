@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christine & Symone's 24th Birthday</title>
+  <style>
+    .snowflake {
+    position: fixed;
+    top: -10px;
+    /* color: rgb(234, 232, 232); */
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    background: linear-gradient(white, #0000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1001;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+  }
+
+  /* Modal background */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Modal box */
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Close button */
+.close {
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Form styling */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: Arial, sans-serif;
+}
+
+/* Labels */
+.rsvp-form label {
+  font-weight: bold;
+  color: #9ae8fe; /* matches timeline accent */
+}
+
+.rsvp-form input[type="text"],
+.rsvp-form input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #b7efff;
+  border-radius: 10px;
+  background: #e6f9ff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.rsvp-form input[type="text"]:focus,
+.rsvp-form input[type="email"]:focus {
+  border-color: #9ae8fe; /* highlight on focus */
+  outline: none;
+}
+
+.checkboxes label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.checkboxes input[type="checkbox"] {
+    accent-color: #9ae8fe;
+}
+
+/* Submit button */
+.rsvp-form button {
+    background: #9ae8fe;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;    
+}
+
+.rsvp-form button:hover {
+  background: #b7efff; /* lighter hover effect */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    header { position: sticky; top: 0; z-index: 1000; background: #b7efffca; color: black; text-align: center; padding: 40px 20px; }
+    h1 { margin: 0; font-size: 2.5rem; }
+    section { padding: 30px 20px; max-width: 900px; margin: auto; }
+    .timeline { border-left: 3px solid #b7efff; padding-left: 20px; }
+    .event { margin-bottom: 20px; }
+    .event time { font-weight: bold; color: #9ae8fe; }
+    #map iframe { width: 100%; height: 350px; border: 0; }
+    .rsvp-btn { display: inline-block; background: white; color: #9ae8fe; padding: 10px 20px; border-radius: 6px; text-decoration: none; }
+    .itinerary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px;}
+
+    .rsvp-btn:hover {
+        background: #9ae8fe;  /* button fills in */
+        color: white;          /* text color switches to white */
+        transform: scale(1.05); /* subtle pop effect */
+}
+  </style>
+</head>
+
+<script>
+  function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.textContent = '❄';
+
+    // Random horizontal position
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Random size
+     const size = Math.random() * 20 + 10;
+    snowflake.style.fontSize = size + 'px';
+
+    // Random animation duration
+    snowflake.style.animationDuration = (Math.random() * 10 + 5) + 's';
+
+    // Random opacity for depth effect
+    snowflake.style.opacity = Math.random();
+
+    document.body.appendChild(snowflake);
+
+    // Remove after falling
+    setTimeout(() => {
+      snowflake.remove();
+    }, 10000);
+  }
+
+  // Create snowflakes continuously
+  setInterval(createSnowflake, 200);
+</script>
+
+
+<body>
+  <header>
+    <h1>Christine & Symone's 24-Hour Birthday Extravaganza 🎉</h1>
+    <p>Come celebrate with us — at any or every point of the day!</p>
+    <a class="rsvp-btn" href="#" id="openModal">RSVP Here</a>
+  </header>
+
+ <section>
+  <h2>24-Hour Itinerary</h2>
+
+  <div class="itinerary-grid">
+    <!-- First 12 hours -->
+    <div class="timeline">
+      <div class="event"><time>Midnight</time> — Activity</div>
+      <div class="event"><time>2:00 AM</time> — Activity</div>
+      <div class="event"><time>4:00 AM</time> — Activity</div>
+      <div class="event"><time>6:00 AM</time> — Activity</div>
+      <div class="event"><time>8:00 AM</time> — Activity</div>
+      <div class="event"><time>10:00 AM</time> — Activity</div>
+    </div>
+    
+
+    <!-- Second 12 hours -->
+    <div class="timeline">
+    <div class="event"><time>Noon</time> — Activity</div>
+      <div class="event"><time>2:00 PM</time> — Activity</div>
+      <div class="event"><time>4:00 PM</time> — Activity</div>
+      <div class="event"><time>6:00 PM</time> — Activity</div>
+      <div class="event"><time>8:00 PM</time> — Activity</div>
+      <div class="event"><time>10:00 PM</time> — Activity</div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="map">
+    <h2>Locations</h2>
+    <!-- Replace with your custom Google map link -->
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13rIDsRgaOV9e4DRdjBbnL7oV1mU-GhU&ehbc=2E312F" width="640" height="480"></iframe>
+  </section>
+
+<div id="rsvpModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Let us know where you plan to be!</h2>
+
+    <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+        <input type="hidden" name="form-name" value="rsvp">
+      <label>Name:
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Email:
+        <input type="email" name="email" required>
+      </label>
+
+      <label>Select which events you'll attend:</label>
+      <div class="checkboxes">
+        <label><input type="checkbox" name="midnight_brunch"> Midnight Brunch</label>
+        <label><input type="checkbox" name="2am_escape"> 2 AM Escape Room</label>
+        <label><input type="checkbox" name="morning_chill"> 4–10 AM Chill</label>
+        <label><input type="checkbox" name="noon_chill"> Noon Chill</label>
+        <label><input type="checkbox" name="2pm_escape"> 2 PM Escape Room</label>
+        <label><input type="checkbox" name="evening_chill"> 4–10 PM Chill</label>
+      </div>
+
+      <label>
+        <input type="checkbox" name="send_copy">
+        Email me a copy of my RSVP
+    </label>
+
+      <button type="submit">Submit RSVP</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("rsvpModal");
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.querySelector(".close");
+
+  openBtn.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+  }
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+</body>
+</html>
