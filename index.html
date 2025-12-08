@@ -235,10 +235,13 @@
         <label><input type="checkbox" name="evening_chill"> 4–10 PM Chill</label>
       </div>
 
-      <label>
-        <input type="checkbox" name="send_copy">
-        Email me a copy of my RSVP
-    </label>
+      <div id="thankYouPopup" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>🎉 Thank you!</h2>
+          <p>Your RSVP has been submitted. We’ll see you at the party!</p>
+        </div>
+      </div>
 
       <button type="submit">Submit RSVP</button>
     </form>
@@ -265,6 +268,41 @@
       modal.style.display = "none";
     }
   }
+</script>
+<script>
+  const rsvpForm = document.forms["rsvp"];
+  const thankYouPopup = document.getElementById("thankYouPopup");
+  const closeThankYou = thankYouPopup.querySelector(".close");
+
+  rsvpForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Send form data to Netlify
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(rsvpForm)).toString()
+    })
+    .then(() => {
+      // Hide RSVP modal
+      document.getElementById("rsvpModal").style.display = "none";
+      // Show thank-you popup
+      thankYouPopup.style.display = "block";
+      // Reset form
+      rsvpForm.reset();
+    })
+    .catch(error => alert(error));
+  });
+
+  closeThankYou.onclick = function() {
+    thankYouPopup.style.display = "none";
+  };
+
+  window.onclick = function(event) {
+    if (event.target === thankYouPopup) {
+      thankYouPopup.style.display = "none";
+    }
+  };
 </script>
 
 
