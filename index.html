@@ -181,6 +181,10 @@
     <h1>Christine & Symone's 24-Hour Birthday Extravaganza 🎉</h1>
     <p>Come celebrate with us — at any or every point of the day!</p>
     <a class="rsvp-btn" href="#" id="openModal">RSVP Here</a>
+    <div id="countdown" style="font-size:1.5rem; color:#0000ff; margin-top:15px;">
+      Countdown loading...
+    </div>
+
   </header>
 
  <section>
@@ -214,7 +218,7 @@
   <section id="map">
     <h2>Locations</h2>
     <!-- Replace with your custom Google map link -->
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13rIDsRgaOV9e4DRdjBbnL7oV1mU-GhU&ehbc=2E312F" width="640" height="480"></iframe>
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13rIDsRgaOV9e4DRdjBbnL7oV1mU-GhU&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
   </section>
 
 <div id="rsvpModal" class="modal">
@@ -323,6 +327,30 @@ closeThankYou.onclick = function() {
 
 </script>
 
+<script>
+  // Set your event start date & time (adjust as needed)
+  const eventDate = new Date("January 3, 2026 00:00:00").getTime();
 
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML = "🎉 The party has started!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      `${days}d ${hours}h ${minutes}m ${seconds}s until kickoff`;
+  }
+
+  const timer = setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
