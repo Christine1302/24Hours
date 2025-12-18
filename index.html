@@ -52,8 +52,6 @@
   max-width: 450px;
   border-radius: 10px;
   animation: fadeIn 0.3s ease-out;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 /* Close button */
@@ -189,6 +187,11 @@
     width: 100%;
     max-width: calc(100vw - 40px);
     box-sizing: border-box;
+  }
+}
+@media (max-width: 600px) {
+  .modal {
+    padding: 12px;
   }
 }
   </style>
