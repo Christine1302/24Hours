@@ -33,7 +33,6 @@
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
-  overflow-y: auto;
 
   /* display: flex; */
   align-items: center;
@@ -185,14 +184,11 @@
 .itinerary-title {
   color: #35cffa; /* or any color you want */
 }
-
 @media (max-width: 600px) {
-  .modal.show {
-    align-items: flex-start;
-  }
-
   .modal-content {
-    margin-top: 40px;
+    width: 100%;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
   }
 }
   </style>
