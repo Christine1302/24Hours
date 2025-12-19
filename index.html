@@ -232,7 +232,8 @@
 <body>
   <header>
     <h1>Christine & Symone's 24-Hour Birthday Extravaganza 🎉</h1>
-    <p>Come celebrate with us at any - or every - point of the day!</p>
+    <p id="hero-message">Come celebrate with us at any - or every - point of the day!</p>
+
     <a class="rsvp-btn" href="#" id="openModal">RSVP Here</a>
     <div id="countdown" style="font-size:1.5rem; color:#0000ff; margin-top:15px;">
       Countdown loading...
@@ -416,5 +417,21 @@ closeThankYou.onclick = function() {
 
   const timer = setInterval(updateCountdown, 1000);
 </script>
+  <script>
+  const messages = [
+    "Come celebrate with us at any — or every — point of the day!",
+    "You don’t have to do it all… but you might want to",
+    "If you're awake, you're invited",
+    "Yes, this is ambitious. Yes, we’re doing it anyway",
+  ];
+
+  const messageEl = document.getElementById("hero-message");
+
+  if (messageEl) {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    messageEl.textContent = messages[randomIndex];
+  }
+</script>
+
 </body>
 </html>
