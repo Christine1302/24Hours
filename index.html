@@ -336,7 +336,7 @@
           <span class="close thankyou-close">&times;</span>
           <h2>🎉 Thank you!</h2>
           <p>Your RSVP has been submitted. We’ll see you there!</p>
-          <p id="laserWaiver" style="display:none; margin-top:12px;"><a href="https://pos.mi-combat.com/micombat/waiverlogin?group=37782-951F" target="_blank">Please complete the Laser Tag waiver before arriving</a></p>
+          <!-- <p id="laserWaiver" style="display:none; margin-top:12px;"><a href="https://pos.mi-combat.com/micombat/waiverlogin?group=37782-951F" target="_blank">Please complete the Laser Tag waiver before arriving</a></p> -->
         </div>
       </div>
 
@@ -378,13 +378,13 @@ closeThankYou.onclick = function() {
 <script>
   const rsvpForm = document.forms["rsvp"];
   const thankYouPopup = document.getElementById("thankYouPopup");
-  const laserWaiver = document.getElementById("laserWaiver");
+  // const laserWaiver = document.getElementById("laserWaiver");
   // const closeThankYou = thankYouPopup.querySelector(".close");
 
   rsvpForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const laserChecked = rsvpForm.querySelector('input[name="laser_tag"]').checked;
+    // const laserChecked = rsvpForm.querySelector('input[name="laser_tag"]').checked;
 
     // Send form data to Netlify
     fetch("/", {
@@ -396,7 +396,7 @@ closeThankYou.onclick = function() {
       // Hide RSVP modal
       document.getElementById("rsvpModal").style.display = "none";
       // Manage waiver link
-      laserWaiver.style.display = laserChecked ? "block" : "none";
+      // laserWaiver.style.display = laserChecked ? "block" : "none";
       // Show thank-you popup
       thankYouPopup.style.display = "block";
       // Reset form
