@@ -125,7 +125,26 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+
+  /* Background image */
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.92)
+    ),
+    url("images/twins.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
     header { position: sticky; top: 0; z-index: 1000; background: #b7efffca; color: black; text-align: center; padding: 20px 20px; }
     h1 { margin: 0; font-size: 2.5rem; }
     section { padding: 30px 20px; max-width: 900px; margin: auto; }
